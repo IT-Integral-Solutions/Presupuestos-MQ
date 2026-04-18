@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Viaje - Punta Cana | MOE Trip</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #c3b5a8 0%, #a89888 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid #a89888;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .logo {
+            width: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .header-text h1 {
+            font-size: 2.2em;
+            color: white;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .header-text p {
+            font-size: 0.95em;
+            color: #c3b5a8;
+            margin-bottom: 3px;
+        }
+        
+        .header-text .agency {
+            font-size: 0.85em;
+            color: #a89888;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .trip-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            background: #f5f3f0;
+            border-bottom: 2px solid #c3b5a8;
+        }
+        
+        .info-box {
+            padding: 25px;
+            text-align: center;
+            border-right: 1px solid #e0d9d0;
+        }
+        
+        .info-box:last-child {
+            border-right: none;
+        }
+        
+        .info-box label {
+            display: block;
+            font-size: 0.85em;
+            color: #6b6b6b;
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .info-box span {
+            display: block;
+            font-size: 1.4em;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        
+        .content {
+            padding: 45px;
+        }
+        
+        .section {
+            margin-bottom: 45px;
+        }
+        
+        .section-title {
+            font-size: 1.6em;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #a89888;
+            font-weight: 700;
+        }
+        
+        .expense-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            border: 1px solid #e0d9d0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .expense-table thead {
+            background: #f5f3f0;
+        }
+        
+        .expense-table th {
+            padding: 18px;
+            text-align: left;
+            font-weight: 700;
+            color: #1a1a1a;
+            border-bottom: 2px solid #c3b5a8;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .expense-table td {
+            padding: 16px 18px;
+            border-bottom: 1px solid #e0d9d0;
+            color: #3d3d3d;
+            font-size: 0.95em;
+        }
+        
+        .expense-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .expense-table tbody tr:hover {
+            background: #faf8f6;
+        }
+        
+        .amount {
+            font-weight: 700;
+            color: #a89888;
+            text-align: right;
+            font-size: 1.05em;
+        }
+        
+        .concept {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #f5f3f0 0%, #ede8e2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border-left: 5px solid #a89888;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            font-size: 1.05em;
+        }
+        
+        .summary-row.total {
+            border-top: 2px solid #a89888;
+            padding-top: 18px;
+            margin-top: 18px;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .summary-row.total .currency {
+            color: #a89888;
+            font-size: 1.3em;
+        }
+        
+        .currency {
+            color: #a89888;
+            font-weight: 700;
+        }
+        
+        .detail-list {
+            background: #f5f3f0;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 5px solid #7ba99a;
+        }
+        
+        .detail-item {
+            padding: 12px 0;
+            color: #3d3d3d;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95em;
+        }
+        
+        .detail-item:not(:last-child) {
+            border-bottom: 1px solid #e0d9d0;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 30px;
+            text-align: center;
+            color: #a89888;
+            font-size: 0.85em;
+            border-top: 4px solid #a89888;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .footer-brand {
+            font-weight: 700;
+            color: #c3b5a8;
+            margin-top: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #a89888;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 700;
+            margin-left: 10px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(200, 180, 168, 0.1) 0%, rgba(168, 152, 136, 0.1) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #a89888;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo {
+                width: 170px;
+            }
+            
+            .trip-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-box {
+                border-right: none;
+                border-bottom: 1px solid #e0d9d0;
+            }
+            
+            .info-box:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="./01_Logo%20principal-4.png" alt="MOE Trip Logo">
+                </div>
+                <div class="header-text">
+                    <h1>Resumen de Viaje</h1>
+                    <p>Punta Cana, República Dominicana</p>
+                    <span class="agency">🌎 MOE TRIP - Tu agencia de viajes de confianza</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="trip-info">
+            <div class="info-box">
+                <label>👤 Viajero</label>
+                <span>María Eugenia Feudal</span>
+            </div>
+            <div class="info-box">
+                <label>📅 Fechas del Viaje</label>
+                <span>7 - 15 Junio 2026</span>
+            </div>
+            <div class="info-box">
+                <label>🏨 Duración</label>
+                <span>8 Noches</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- VUELOS -->
+            <div class="section">
+                <h2 class="section-title">✈️ Vuelos Aéreos <span class="badge">Arajet</span></h2>
+                <table class="expense-table">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Detalles</th>
+                            <th class="amount">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="concept">Ida: Buenos Aires → Punta Cana</td>
+                            <td>DM6261 | 7 Jun, 08:40 → 15:50 (8h 10m)</td>
+                            <td class="amount">$100.00 USD</td>
+                        </tr>
+                        <tr>
+                            <td class="concept">Retorno: Punta Cana → Buenos Aires</td>
+                            <td>DM6206 | 15 Jun, 15:05 → 00:05+1 (8h)</td>
+                            <td class="amount">$142.00 USD</td>
+                        </tr>
+                        <tr>
+                            <td class="concept">Impuestos y Tasas Aéreas</td>
+                            <td>Incluido en reserva (Código: JOTUN0)</td>
+                            <td class="amount">$524.18 USD</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <span><strong>Pasajero:</strong></span>
+                        <span>María Eugenia Feudal (DOB: 07/11/1973)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Equipaje:</strong></span>
+                        <span>23 kg (50 lbs) - Incluido</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Asientos Asignados:</strong></span>
+                        <span>17C (Ida) | 17D (Retorno)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Artículo Personal:</strong></span>
+                        <span>Incluido en tarifa</span>
+                    </div>
+                </div>
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span><strong>SUBTOTAL VUELOS</strong></span>
+                        <span class="currency">$766.18 USD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HOTEL -->
+            <div class="section">
+                <h2 class="section-title">🏨 Alojamiento <span class="badge">All Inclusive</span></h2>
+                <div class="detail-list" style="border-left-color: #7ba99a;">
+                    <div class="detail-item">
+                        <span><strong>Hotel:</strong></span>
+                        <span>Riu Palace Punta Cana - 5 Estrellas</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Ubicación:</strong></span>
+                        <span>Playa de Arena Gorda, Punta Cana</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Habitación:</strong></span>
+                        <span>Suite Junior - Tropical View</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Check-in:</strong></span>
+                        <span>Dom, 7 Jun 2026 (15:00 - 23:00)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Check-out:</strong></span>
+                        <span>Lun, 15 Jun 2026 (12:00)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Servicios Incluidos:</strong></span>
+                        <span>Comidas, bebidas, snacks, WiFi, Estacionamiento, A/C</span>
+                    </div>
+                </div>
+                <table class="expense-table" style="margin-top: 25px;">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Detalles</th>
+                            <th class="amount">Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="concept">Habitación (8 noches)</td>
+                            <td>$173.09/noche promedio</td>
+                            <td class="amount">$1,384.74 USD</td>
+                        </tr>
+                        <tr>
+                            <td class="concept">Impuestos y Cargos</td>
+                            <td>Incluido en reserva</td>
+                            <td class="amount">$350.20 USD</td>
+                        </tr>
+                        <tr>
+                            <td class="concept">Cargo Servicio Agencia</td>
+                            <td>Comisión por gestión (Expedia)</td>
+                            <td class="amount">$433.73 USD</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span><strong>SUBTOTAL HOTEL</strong></span>
+                        <span class="currency">$2,168.67 USD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TRASLADOS -->
+            <div class="section">
+                <h2 class="section-title">🚗 Traslados Aeropuerto <span class="badge">Shuttle Central</span></h2>
+                <div class="detail-list" style="border-left-color: #b3c4be;">
+                    <div class="detail-item">
+                        <span><strong>Servicio:</strong></span>
+                        <span>Sedán Privado - Meet & Greet</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Llegada:</strong></span>
+                        <span>7 Jun - Aeropuerto (PUJ) → Hotel Riu Palace</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Salida:</strong></span>
+                        <span>15 Jun - Hotel Riu Palace → Aeropuerto (PUJ)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Capacidad de Equipaje:</strong></span>
+                        <span>3 piezas estándar por pasajero</span>
+                    </div>
+                </div>
+                <div class="summary-box" style="border-left-color: #b3c4be; margin-top: 25px;">
+                    <div class="summary-row">
+                        <span><strong>Traslados Redondo (Ida y Vuelta)</strong></span>
+                        <span class="currency">$55.69 USD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEGUROS -->
+            <div class="section">
+                <h2 class="section-title">🛡️ Seguro de Viaje <span class="badge">Assist Card</span></h2>
+                <div class="detail-list" style="border-left-color: #2ea89a;">
+                    <div class="detail-item">
+                        <span><strong>Producto:</strong></span>
+                        <span>DAILY 4C - AC 1M (Código: 94800-AC1M D)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Duración:</strong></span>
+                        <span>9 días | 7 Jun - 15 Jun 2026</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Cobertura Geográfica:</strong></span>
+                        <span>América Central y Caribe - Internacional</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Cobertura Global:</strong></span>
+                        <span>USD 1.000.000</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Asegurador:</strong></span>
+                        <span>Chubb Seguros</span>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong style="color: #a89888;">Principales Coberturas:</strong><br>
+                    • Asistencia Médica: USD 1.000.000<br>
+                    • Repatriación Sanitaria: USD 100.000<br>
+                    • Garantía de Cancelación: USD 1.500<br>
+                    • Robo/Extravío de Documentos: Incluido<br>
+                    • COVID Extra: Incluido
+                </div>
+                <div class="summary-box" style="border-left-color: #2ea89a; margin-top: 25px;">
+                    <div class="summary-row">
+                        <span><strong>Seguro de Viaje + COVID Extra</strong></span>
+                        <span class="currency">$152.77 USD</span>
+                    </div>
+                    <div class="summary-row" style="font-size: 0.9em; padding: 8px 0;">
+                        <span style="color: #6b6b6b;">Equivalente en ARS (Cotización 17/04/2026):</span>
+                        <span style="color: #a89888; font-weight: 700;">$210,817.06 ARS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RESUMEN TOTAL -->
+            <div class="section">
+                <h2 class="section-title">📊 Resumen Total de Inversión</h2>
+                <div class="summary-box" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 35px; border-left: 5px solid #a89888;">
+                    <div class="summary-row" style="color: #c3b5a8; margin-bottom: 25px; font-weight: 700;">
+                        <span>CONCEPTO</span>
+                        <span>MONTO USD</span>
+                    </div>
+                    <div class="summary-row" style="color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(195,181,168,0.3); padding: 15px 0;">
+                        <span>Vuelos Aéreos</span>
+                        <span style="color: #c3b5a8;">$766.18</span>
+                    </div>
+                    <div class="summary-row" style="color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(195,181,168,0.3); padding: 15px 0;">
+                        <span>Alojamiento (Hotel + Impuestos + Agencia)</span>
+                        <span style="color: #c3b5a8;">$2,168.67</span>
+                    </div>
+                    <div class="summary-row" style="color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(195,181,168,0.3); padding: 15px 0;">
+                        <span>Traslados Aeropuerto</span>
+                        <span style="color: #c3b5a8;">$55.69</span>
+                    </div>
+                    <div class="summary-row" style="color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(195,181,168,0.3); padding: 15px 0;">
+                        <span>Seguro de Viaje Integral</span>
+                        <span style="color: #c3b5a8;">$152.77</span>
+                    </div>
+                    <div class="summary-row total" style="border: none; color: #c3b5a8; font-size: 1.5em; padding: 25px 0; margin: 0; border-top: 2px solid rgba(195,181,168,0.5);">
+                        <span>💰 TOTAL PAGADO</span>
+                        <span style="color: #c3b5a8; font-size: 1.4em;">$3,143.31 USD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- INFORMACIÓN ADICIONAL -->
+            <div class="section">
+                <h2 class="section-title">ℹ️ Detalles Importantes</h2>
+                <div class="detail-list">
+                    <div class="detail-item">
+                        <span><strong>Viajero Principal:</strong></span>
+                        <span>María Eugenia Feudal (DOB: 7 Nov 1973, 52 años)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Forma de Pago:</strong></span>
+                        <span>Tarjeta Visa •••• 0277 (Procesado por Expedia)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Cancelación Hotel:</strong></span>
+                        <span style="color: #2ea89a;">✓ Gratis hasta 4 Jun 2026 a las 00:00</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Cancelación Traslados:</strong></span>
+                        <span style="color: #2ea89a;">✓ Gratis hasta 24 horas antes</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Confirmación Vuelos:</strong></span>
+                        <span style="font-family: monospace; color: #a89888; font-weight: 700;">JOTUN0</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Confirmación Hotel:</strong></span>
+                        <span style="font-family: monospace; color: #a89888; font-weight: 700;">73423087870258</span>
+                    </div>
+                    <div class="detail-item">
+                        <span><strong>Confirmación Traslados:</strong></span>
+                        <span style="font-family: monospace; color: #a89888; font-weight: 700;">73423110924648</span>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <strong style="color: #1a1a1a;">🎯 Recomendaciones Finales:</strong><br>
+                    • Guardar todos los números de confirmación<br>
+                    • Llevar documentos de identificación y reservas impresas<br>
+                    • Responder mensajes del proveedor de traslados para confirmar horarios<br>
+                    • En caso de emergencia, contactar a Assist Card (disponible 24/7)<br>
+                    • Disfrutar del viaje todo incluido en el hotel
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>MOE TRIP - Tu Agencia de Viajes de Confianza</strong></p>
+            <p>Resumen de Viaje | María Eugenia Feudal</p>
+            <p>Período: 7 - 15 Junio 2026 | Punta Cana, República Dominicana</p>
+            <p style="margin-top: 15px; font-size: 0.8em; color: #7ba99a;">Documento de referencia - Conservar para control de gastos, garantías y asistencia</p>
+            <p class="footer-brand">📱 Para consultas o cambios, contacta a MOE TRIP</p>
+        </div>
+    </div>
+</body>
+</html>
