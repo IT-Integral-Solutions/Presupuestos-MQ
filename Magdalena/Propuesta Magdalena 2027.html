@@ -227,7 +227,8 @@ section{position:relative;z-index:1}
 
 /* SUMMARY */
 .summ{background:linear-gradient(158deg,var(--cream) 0%,#f3eff7 100%)}
-.sc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.3rem;margin-top:2.8rem}
+.summ .wrap{max-width:1220px}
+.sc-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.3rem;margin-top:2.8rem}
 .sc{border-radius:24px;overflow:hidden;
   box-shadow:0 8px 34px rgba(80,40,120,.1);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s}
 .sc:hover{transform:translateY(-7px);box-shadow:0 22px 52px rgba(80,40,120,.18)}
@@ -294,13 +295,15 @@ section{position:relative;z-index:1}
 /* FOOTER */
 footer{background:#0d0616;padding:3.25rem 2.5rem;
   display:flex;flex-direction:column;align-items:center;gap:1.8rem}
-.ft-b{display:flex;align-items:center;gap:.75rem}
+.ft-b{display:flex;flex-direction:column;align-items:center;gap:.6rem}
 .ft-lg{width:46px;height:46px;border-radius:50%;
   background:linear-gradient(135deg,var(--rose),var(--violet));
   display:flex;align-items:center;justify-content:center;font-size:1.25rem;
   box-shadow:0 4px 16px rgba(180,130,200,.28)}
+.ft-logo{width:min(210px,62vw);height:auto;display:block}
 .ft-nm{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;color:#fff;letter-spacing:.02em;line-height:1.1}
 .ft-nm small{display:block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'DM Sans',sans-serif}
+.ft-tag{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45)}
 .ft-ls{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem}
 .ft-ls a{color:rgba(255,255,255,.38);font-size:.78rem;text-decoration:none;
   display:flex;align-items:center;gap:.38rem;transition:color .25s;letter-spacing:.03em}
@@ -311,6 +314,14 @@ footer{background:#0d0616;padding:3.25rem 2.5rem;
   .db{padding:2.25rem 1.25rem 3rem}
   .wrap{padding:66px 1.25rem}
   .gt{padding:1.65rem}
+}
+
+@media(max-width:1080px){
+  .sc-g{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:640px){
+  .sc-g{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -773,10 +784,10 @@ footer{background:#0d0616;padding:3.25rem 2.5rem;
         <div style="display:grid;grid-template-columns:60px 1fr;align-items:center;gap:1rem;background:linear-gradient(135deg,rgba(176,224,212,.15),rgba(188,220,240,.1));border-radius:14px;padding:.9rem 1.25rem;border:1px solid rgba(176,224,212,.3);box-shadow:0 2px 12px rgba(80,40,120,.05)">
           <div style="text-align:center">
             <p style="font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Día 8</p>
-            <p style="font-size:1.5rem;line-height:1">✈️</p>
+            <p style="font-size:1.5rem;line-height:1">🚢</p>
           </div>
           <div>
-            <p style="font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.15rem">Regreso / última mañana libre</p>
+            <p style="font-size:.9rem;font-weight:600;color:var(--ink);margin-bottom:.15rem">Check out del Hotel y Traslado a Puerto Cabo Canaveral para tomar crucero a Bahamas</p>
             <p style="font-size:.76rem;color:var(--mid);font-weight:300">Transfer al aeropuerto o mañana libre si el vuelo lo permite</p>
           </div>
         </div>
@@ -1091,6 +1102,16 @@ footer{background:#0d0616;padding:3.25rem 2.5rem;
           <span class="sfp"><span>USD </span>1,520</span>
         </div>
       </div>
+      <div class="sc reveal d2">
+        <div class="sc-h" style="background:linear-gradient(135deg,#edf4ff,#f0f8ff)">
+          <div class="bg-n">04</div><div class="sci">🚢</div>
+          <p class="sct">MSC Seaside</p><p class="scd">31 Ene–4 Feb · Pto. Cañaveral</p>
+        </div>
+        <div class="sc-f">
+          <span class="sfl">3 cabinas · Pto. Cañaveral</span>
+          <span class="sfp"><span>USD </span>3,836</span>
+        </div>
+      </div>
     </div>
     <div class="gt reveal">
       <div class="gt-l">
@@ -1107,17 +1128,6 @@ footer{background:#0d0616;padding:3.25rem 2.5rem;
     </div>
   </div>
 </section>
-<div class="sc reveal d2">
-        <div class="sc-h" style="background:linear-gradient(135deg,#edf4ff,#f0f8ff)">
-          <div class="bg-n">04</div><div class="sci">🚢</div>
-          <p class="sct">MSC Seaside</p><p class="scd">31 Ene–4 Feb · Pto. Cañaveral</p>
-        </div>
-        <div class="sc-f">
-          <span class="sfl">3 cabinas · Pto. Cañaveral</span>
-          <span class="sfp"><span>USD </span>3,836</span>
-        </div>
-      </div>
-      
 <!-- STEPS -->
 <section class="steps-sec">
   <div class="wrap">
@@ -1213,17 +1223,15 @@ footer{background:#0d0616;padding:3.25rem 2.5rem;
 <!-- FOOTER -->
 <footer>
   <div class="ft-b">
-    <div class="ft-lg">🏰</div>
-    <div>
-      <p class="ft-nm">Con Magui a Disney<small>travel designer · Disney & Orlando</small></p>
-    </div>
+    <img id="ft-logo" class="ft-logo" alt="Con Magui a Disney">
+    <p class="ft-tag">TRAVEL DESIGNER · DISNEY & ORLANDO</p>
   </div>
   <div class="ft-ls">
     <a href="https://www.conmaguiadisney.com" target="_blank">🌐 www.conmaguiadisney.com</a>
     <a href="https://instagram.com/conmaguiadisney" target="_blank">📸 @conmaguiadisney</a>
     <a href="https://wa.me/5493834319891" target="_blank">💬 +549 383 431-9891</a>
   </div>
-  <p class="ft-cp">© 2027 Con Magui a Disney · Propuesta exclusiva · Valores estimados sujetos a confirmación</p>
+  <p class="ft-cp">© 2026 Con Magui a Disney · Propuesta exclusiva · Valores estimados sujetos a confirmación</p>
 </footer>
 
 <script>
@@ -1245,6 +1253,11 @@ document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
 // Navbar
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>55));
+
+// Footer logo (reuse navbar logo)
+const navLogo=document.querySelector('.nav-brand img');
+const ftLogo=document.getElementById('ft-logo');
+if(navLogo&&ftLogo)ftLogo.src=navLogo.src;
 
 // Hero parallax
 const hi=document.querySelector('.h-img');
